@@ -21,7 +21,7 @@ function getCurrentFunctionName() {
   const setName = getCurrentFunctionName.name;
   return setName;
 }
-console.log(getCurrentFunctionName());
+getCurrentFunctionName();
 /**
  * Returns the body of the function passed as argument.
  *
