@@ -18,9 +18,10 @@
  *
  */
 function getCurrentFunctionName() {
-  throw new Error('Not implemented');
+  const setName = getCurrentFunctionName.name;
+  return setName;
 }
-
+console.log(getCurrentFunctionName());
 /**
  * Returns the body of the function passed as argument.
  *
