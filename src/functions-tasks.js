@@ -60,10 +60,21 @@ getFunctionBody(hiHello);
  *  ]) => [0, 1, 2]
  *
  */
-function getArgumentsCount(/* funcs */) {
-  throw new Error('Not implemented');
+function getArgumentsCount(funcs) {
+  const result = funcs.map((f) => {
+    return f.length;
+  });
+  return result;
 }
-
+getArgumentsCount([
+  function bar() {
+    return 'hello world';
+  },
+  function myFunc(x) {
+    return x;
+  },
+  (a, b) => a * b,
+]);
 /**
  * Returns the math power function with the specified exponent
  *
