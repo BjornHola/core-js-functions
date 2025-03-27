@@ -43,7 +43,7 @@ function getFunctionBody(func) {
   return func.toString();
 }
 function hiHello() {
-  console.log('hello world');
+  return 'hello world';
 }
 getFunctionBody(hiHello);
 /**
