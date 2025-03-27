@@ -91,10 +91,17 @@ getArgumentsCount([
  *   power05(16) => 4
  *
  */
-function getPowerFunction(/* exponent */) {
-  throw new Error('Not implemented');
+function getPowerFunction(exponent) {
+  return function bringBase(base) {
+    return base ** exponent;
+  };
 }
-
+const power2 = getPowerFunction(2);
+power2(2);
+power2(4);
+const power05 = getPowerFunction(0.5);
+power05(4);
+power05(16);
 /**
  * Returns the polynom function of one argument based on specified coefficients.
  * See: https://en.wikipedia.org/wiki/Polynomial#Definition
