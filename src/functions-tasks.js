@@ -128,10 +128,10 @@ function getPolynom(...coefficients) {
     return result;
   };
 }
-console.log(getPolynom(2, 3, 5));
-console.log(getPolynom(1, -3));
-console.log(getPolynom(8));
-console.log(getPolynom());
+getPolynom(2, 3, 5);
+getPolynom(1, -3);
+getPolynom(8);
+getPolynom();
 /**
  * Memoizes passed function and returns function
  * which invoked first time calls the passed function and then always returns cached result.
