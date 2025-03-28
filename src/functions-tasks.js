@@ -197,8 +197,7 @@ const retryer = retry((attempt) => {
   return attempt;
 }, 2);
 
-const result = retryer();
-result();
+retryer();
 /**
  * Returns the logging wrapper for the specified method,
  * Logger has to log the start and end of calling the specified function.
