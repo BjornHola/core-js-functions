@@ -115,10 +115,23 @@ power05(16);
  *   getPolynom(8)     => y = 8
  *   getPolynom()      => null
  */
-function getPolynom() {
-  throw new Error('Not implemented');
+function getPolynom(...coefficients) {
+  if (coefficients.length === 0) {
+    return null;
+  }
+  return function coeff(x) {
+    let result = 0;
+    for (let i = 0; i < coefficients.length; i += 1) {
+      const power = coefficients.length - 1 - i;
+      result += coefficients[i] * x ** power;
+    }
+    return result;
+  };
 }
-
+console.log(getPolynom(2, 3, 5));
+console.log(getPolynom(1, -3));
+console.log(getPolynom(8));
+console.log(getPolynom());
 /**
  * Memoizes passed function and returns function
  * which invoked first time calls the passed function and then always returns cached result.
