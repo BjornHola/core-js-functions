@@ -246,10 +246,10 @@ function partialUsingArguments(fn, ...args1) {
 const fn = function anonynous(x1, x2, x3, x4) {
   return x1 + x2 + x3 + x4;
 };
-console.log(partialUsingArguments(fn, 'a')('b', 'c', 'd'));
-console.log(partialUsingArguments(fn, 'a', 'b')('c', 'd'));
-console.log(partialUsingArguments(fn, 'a', 'b', 'c')('d'));
-console.log(partialUsingArguments(fn, 'a', 'b', 'c', 'd')());
+partialUsingArguments(fn, 'a')('b', 'c', 'd');
+partialUsingArguments(fn, 'a', 'b')('c', 'd');
+partialUsingArguments(fn, 'a', 'b', 'c')('d');
+partialUsingArguments(fn, 'a', 'b', 'c', 'd')();
 
 /**
  * Returns the id generator function that returns next integer starting
@@ -268,9 +268,26 @@ console.log(partialUsingArguments(fn, 'a', 'b', 'c', 'd')());
  *   getId4() => 7
  *   getId10() => 11
  */
-function getIdGeneratorFunction(/* startFrom */) {
-  throw new Error('Not implemented');
+function getIdGeneratorFunction(startFrom) {
+  if (typeof startFrom !== 'number') {
+    throw new Error('Not a number!');
+  }
+
+  let id = startFrom;
+  return function getId() {
+    const currentId = id;
+    id += 1;
+    return currentId;
+  };
 }
+const getId4 = getIdGeneratorFunction(4);
+const getId10 = getIdGeneratorFunction(10);
+getId4();
+getId10();
+getId4();
+getId4();
+getId4();
+getId10();
 
 module.exports = {
   getCurrentFunctionName,
