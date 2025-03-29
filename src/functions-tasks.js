@@ -238,9 +238,18 @@ function logger(/* func, logFunc */) {
  *   partialUsingArguments(fn, 'a','b','c')('d') => 'abcd'
  *   partialUsingArguments(fn, 'a','b','c','d')() => 'abcd'
  */
-function partialUsingArguments(/* fn, ...args1 */) {
-  throw new Error('Not implemented');
+function partialUsingArguments(fn, ...args1) {
+  return function sum(...args2) {
+    return fn(...args1, ...args2);
+  };
 }
+const fn = function anonynous(x1, x2, x3, x4) {
+  return x1 + x2 + x3 + x4;
+};
+console.log(partialUsingArguments(fn, 'a')('b', 'c', 'd'));
+console.log(partialUsingArguments(fn, 'a', 'b')('c', 'd'));
+console.log(partialUsingArguments(fn, 'a', 'b', 'c')('d'));
+console.log(partialUsingArguments(fn, 'a', 'b', 'c', 'd')());
 
 /**
  * Returns the id generator function that returns next integer starting
